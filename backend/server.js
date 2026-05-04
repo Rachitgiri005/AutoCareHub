@@ -39,8 +39,17 @@ app.use((err, req, res, next) => {
   const status = err.statusCode || 500;
   res.status(status).json({ message: err.message || "Internal Server Error" });
 });
- 
+
+
+// 1. Assign Port dynamically: Use Render's port IF it exists, otherwise use 5000
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () =>
-  console.log(`🚀  Server running → http://localhost:${PORT}`)
-);
+
+// 2. Update your listener to use the PORT variable and '0.0.0.0'
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 Server is live on port ${PORT}`);
+});
+ 
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () =>
+//   console.log(`🚀  Server running → http://localhost:${PORT}`)
+// );
