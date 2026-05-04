@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 app.use("/api/auth",         require("./routes/authRoutes"));
 app.use("/api/appointments", require("./routes/appointmentRoutes"));
 app.use("/api/services",     require("./routes/serviceRoutes"));
-app.use("/api/invoices",     require("./routes/invoiceRoutes"));
+app.use("/api/invoices", require("./routes/InvoiceRoutes"));
 app.use("/api/admin",        require("./routes/adminRoutes"));
 app.use("/api/reviews",      require("./routes/reviewRoutes"));
  
