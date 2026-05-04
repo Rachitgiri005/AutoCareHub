@@ -10,7 +10,7 @@ export default function MyAppointments() {
     const fetchAppointments = async () => {
       try {
         const { data } = await api.get("/appointments");
-        setAppointments(data);
+        setAppointments(data.appointments || []);
       } catch (error) {
         console.error("Failed to load appointments");
         // Mock data for presentation UI
