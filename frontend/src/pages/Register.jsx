@@ -15,7 +15,8 @@ export default function Register() {
     setLoading(true);
     try {
       const { data } = await api.post("/auth/register", formData);
-      login(data);
+      // login(data);
+      login(data.user, data.token);
       toast.success("Account created successfully!");
       navigate("/dashboard");
     } catch (error) {
