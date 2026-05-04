@@ -9,10 +9,10 @@ export default function BookService() {
   
   const [formData, setFormData] = useState({
     vehicleName: "", 
-    vehicleMake: "",
-    vehicleModel: "",
-    serviceType: "Oil Change",
+    vehicleYear: "",
+    serviceName: "Oil Change",
     date: "",
+    timeSlot: "",
     notes: ""
   });
 
@@ -43,32 +43,32 @@ export default function BookService() {
         <form onSubmit={handleSubmit} className="form-row">
           
           <div className="form-group">
-            <label className="label">Vehicle Name (Nickname)</label>
+            <label className="label">Vehicle Name</label>
             <input 
               type="text" 
               className="input" 
-              placeholder="e.g., My Daily Driver, The SUV" 
+              placeholder="e.g., My Daily Driver" 
               required 
               value={formData.vehicleName} 
               onChange={(e) => setFormData({...formData, vehicleName: e.target.value})} 
             />
           </div>
 
-          <div className="form-row-2">
-            <div className="form-group">
-              <label className="label">Vehicle Make</label>
-              <input type="text" className="input" placeholder="e.g., Toyota" required value={formData.vehicleMake} onChange={(e) => setFormData({...formData, vehicleMake: e.target.value})} />
-            </div>
-            <div className="form-group">
-              <label className="label">Vehicle Model & Year</label>
-              <input type="text" className="input" placeholder="e.g., Camry 2020" required value={formData.vehicleModel} onChange={(e) => setFormData({...formData, vehicleModel: e.target.value})} />
-            </div>
+          <div className="form-group">
+            <label className="label">Vehicle Year</label>
+            <input 
+              type="text" 
+              className="input" 
+              placeholder="e.g., 2020" 
+              value={formData.vehicleYear} 
+              onChange={(e) => setFormData({...formData, vehicleYear: e.target.value})} 
+            />
           </div>
 
           <div className="form-row-2">
             <div className="form-group">
               <label className="label">Type of Service</label>
-              <select className="select" value={formData.serviceType} onChange={(e) => setFormData({...formData, serviceType: e.target.value})}>
+              <select className="select" value={formData.serviceName} onChange={(e) => setFormData({...formData, serviceName: e.target.value})}>
                 <option value="Oil Change">Oil Change</option>
                 <option value="Brake Inspection">Brake Inspection</option>
                 <option value="Engine Diagnostics">Engine Diagnostics</option>
@@ -83,7 +83,23 @@ export default function BookService() {
           </div>
 
           <div className="form-group">
-            <label className="label">Additional Notes or Symptoms</label>
+            <label className="label">Time Slot</label>
+            <select className="select" required value={formData.timeSlot} onChange={(e) => setFormData({...formData, timeSlot: e.target.value})}>
+              <option value="">-- Select a time --</option>
+              <option value="09:00 AM">09:00 AM</option>
+              <option value="10:00 AM">10:00 AM</option>
+              <option value="11:00 AM">11:00 AM</option>
+              <option value="12:00 PM">12:00 PM</option>
+              <option value="01:00 PM">01:00 PM</option>
+              <option value="02:00 PM">02:00 PM</option>
+              <option value="03:00 PM">03:00 PM</option>
+              <option value="04:00 PM">04:00 PM</option>
+              <option value="05:00 PM">05:00 PM</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label className="label">Additional Notes</label>
             <textarea className="textarea" placeholder="E.g., The brakes are squeaking when I stop..." value={formData.notes} onChange={(e) => setFormData({...formData, notes: e.target.value})}></textarea>
           </div>
 
