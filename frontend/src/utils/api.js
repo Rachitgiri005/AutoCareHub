@@ -1,7 +1,10 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "/api",
+  // This tells the frontend to use the Render link when live, and the proxy when local
+  baseURL: import.meta.env.MODE === "production" 
+    ? "https://autocarehub-4.onrender.com/api" 
+    : "/api",
   timeout: 15000,
 });
 
